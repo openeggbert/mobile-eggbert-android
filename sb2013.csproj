@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-android</TargetFramework>
     <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
@@ -9,6 +9,22 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningStorePass>rvrvrv</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>rv-alias</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>rvrvrv</AndroidSigningKeyPass>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <AndroidSigningKeyStore>rv.keystore</AndroidSigningKeyStore>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningStorePass>rvrvrv</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>rv-alias</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>rvrvrv</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />

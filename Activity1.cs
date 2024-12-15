@@ -4,7 +4,7 @@ using Android.OS;
 using Android.Views;
 using Microsoft.Xna.Framework;
 
-namespace sb2013
+namespace WindowsPhoneSpeedyBlupi
 {
     [Activity(
         Label = "@string/app_name",
