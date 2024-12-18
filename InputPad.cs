@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.Devices.Sensors;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using WindowsPhoneSpeedyBlupi;
@@ -215,7 +216,7 @@ namespace WindowsPhoneSpeedyBlupi
             this.sound = sound;
             this.gameData = gameData;
             pressedGlyphs = new List<Def.ButtonGlygh>();
-            accelSensor = AccelerometerFactory.Create();
+            accelSensor = new Accelerometer();
             accelSensor.CurrentValueChanged += HandleAccelSensorCurrentValueChanged;
             accelSlider = new Slider
             {
@@ -285,6 +286,46 @@ namespace WindowsPhoneSpeedyBlupi
                 click.X = mouseState.X;
                 click.Y = mouseState.Y;
                 touchesOrClicks.Add(click);
+            }
+
+
+            float screenWidth = game1.getGraphics().GraphicsDevice.Viewport.Width;
+            float screenHeight = game1.getGraphics().GraphicsDevice.Viewport.Height;
+            float screenRatio = screenWidth / screenHeight;
+
+
+            //if (screenRatio < 1.3333333333333333 && false)
+            {
+                for (int i = 0; i < touchesOrClicks.Count; i++)
+                {
+
+                    //if (touchOrClick.X == -1) continue;
+                    var touchOrClick = touchesOrClicks[i];
+
+                    float originalX = touchOrClick.X;
+                    float originalY = touchOrClick.Y;
+
+
+                    float widthHeightRatio = screenWidth / screenHeight;
+                    float heightRatio = 480 / screenHeight;
+                    float widthRatio = 640 / screenWidth;
+                    Debug.WriteLine("-----");
+                    Debug.WriteLine("originalX=" + originalX);
+                    Debug.WriteLine("originalY=" + originalY);
+                    Debug.WriteLine("heightRatio=" + heightRatio);
+                    Debug.WriteLine("widthRatio=" + widthRatio);
+                    Debug.WriteLine("widthHeightRatio=" + widthHeightRatio);
+                    if (screenHeight> 480) {
+                    touchOrClick.X = (int)(originalX * heightRatio);
+                    touchOrClick.Y = (int)(originalY * heightRatio);
+                    touchesOrClicks[i] = touchOrClick;
+                    }
+
+                    Debug.WriteLine("new X" + touchOrClick.X);
+                    Debug.WriteLine("new Y" + touchOrClick.Y);
+                    
+
+                }
             }
 
             KeyboardState newState = Keyboard.GetState();
@@ -952,12 +993,13 @@ namespace WindowsPhoneSpeedyBlupi
         }
 
 
-        private void HandleAccelSensorCurrentValueChanged(object sender, AccelerometerEventArgs e)
+        private void HandleAccelSensorCurrentValueChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
         {
             //IL_0001: Unknown result type (might be due to invalid IL or missing references)
             //IL_0006: Unknown result type (might be due to invalid IL or missing references)
 
-            float y = e.Y;
+            AccelerometerReading sensorReading = e.SensorReading;
+            float y = ((AccelerometerReading)(sensorReading)).Acceleration.Y;
             float num = (1f - (float)gameData.AccelSensitivity) * 0.06f + 0.04f;
             float num2 = (accelLastState ? (num * 0.6f) : num);
             if (y > num2)

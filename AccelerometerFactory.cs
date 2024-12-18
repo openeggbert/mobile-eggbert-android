@@ -8,6 +8,6 @@ namespace WindowsPhoneSpeedyBlupi
 {
     public class AccelerometerFactory
     {
-        public static Accelerometer Create() { return new AccelerometerDummyImpl(); }
+        public static IAccelerometer Create() { return new AccelerometerDummyImpl(); }
     }
 }

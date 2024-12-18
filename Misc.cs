@@ -133,7 +133,7 @@ namespace WindowsPhoneSpeedyBlupi
                 case 6: return KeyboardPress.Space;
                 case 7: return KeyboardPress.Escape;
                 case 8: return KeyboardPress.Pause;
-                default: throw new Exception("Unsupported number for KeyboardPress: " + i);
+                default: return KeyboardPress.None; //throw new Exception("Unsupported number for KeyboardPress: " + i);
             }
         }
         public static int keyboardPressToInt(KeyboardPress kp)

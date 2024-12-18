@@ -42,8 +42,9 @@ namespace WindowsPhoneSpeedyBlupi
                 text = streamReader.ReadToEnd();
                 stream.Close();
             }
-            catch
+            catch (Exception e)
             {
+                Debug.Write(e.Message);
                 Debug.Write("Fatal error. Loading world failed: " + worldFilename + "\n");
                 //Environment.Exit(1);
             }
@@ -51,7 +52,7 @@ namespace WindowsPhoneSpeedyBlupi
             {
                 return null;
             }
-            return text.Split('\n');
+            return text.Split("\n");
         }
 
         private static string GetWorldFilename(int gamer, int rank)

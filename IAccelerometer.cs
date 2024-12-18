@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsPhoneSpeedyBlupi
 {
-    public interface Accelerometer
+    public interface IAccelerometer
     {
         void Start();
         void Stop();

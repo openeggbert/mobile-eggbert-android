@@ -979,5 +979,9 @@ namespace WindowsPhoneSpeedyBlupi
             this.graphics.ToggleFullScreen();
         }
         public bool IsFullScreen() { return this.graphics.IsFullScreen; }
+        public GraphicsDeviceManager getGraphics()
+        {
+            return graphics;
+        }
     }
 }

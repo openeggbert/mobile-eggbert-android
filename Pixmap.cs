@@ -1,6 +1,7 @@
 ﻿// WindowsPhoneSpeedyBlupi, Version=1.0.0.5, Culture=neutral, PublicKeyToken=6db12cd62dbec439
 // WindowsPhoneSpeedyBlupi.Pixmap
 using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using WindowsPhoneSpeedyBlupi;
@@ -63,20 +64,23 @@ namespace WindowsPhoneSpeedyBlupi
             get
             {
                 TinyRect result = default(TinyRect);
-                double num = graphics.GraphicsDevice.Viewport.Width;
-                double num2 = graphics.GraphicsDevice.Viewport.Height;
-                if (num != 0.0 && num2 != 0.0)
+                double screenWidth = graphics.GraphicsDevice.Viewport.Width;
+                double screenHeight = graphics.GraphicsDevice.Viewport.Height;
+                if(screenHeight > 480) {
+                    screenWidth = screenHeight * (640f / 480f);
+                }
+                if (screenWidth != 0.0 && screenHeight != 0.0)
                 {
                     double num3;
                     double num4;
-                    if (num / num2 < 1.3333333333333333)
+                    if (screenWidth / screenHeight < 1.3333333333333333)
                     {
                         num3 = 640.0;
-                        num4 = 640.0 * (num2 / num);
+                        num4 = 640.0 * (screenHeight / screenWidth);
                     }
                     else
                     {
-                        num3 = 480.0 * (num / num2);
+                        num3 = 480.0 * (screenWidth / screenHeight);
                         num4 = 480.0;
                     }
                     result.Left = 0;
@@ -242,13 +246,19 @@ namespace WindowsPhoneSpeedyBlupi
 
         private void UpdateGeometry()
         {
-            double num = graphics.GraphicsDevice.Viewport.Width;
-            double num2 = graphics.GraphicsDevice.Viewport.Height;
-            double val = num / 640.0;
-            double val2 = num2 / 480.0;
+            double screenWidth = graphics.GraphicsDevice.Viewport.Width;
+            double screenHeight = graphics.GraphicsDevice.Viewport.Height;
+            if (screenHeight > 480)
+            {
+                screenWidth = screenHeight * (640f / 480f);
+            }
+            Debug.WriteLine("graphics.GraphicsDevice.Viewport.Width=" + graphics.GraphicsDevice.Viewport.Width);
+            Debug.WriteLine("graphics.GraphicsDevice.Viewport.Height=" + graphics.GraphicsDevice.Viewport.Height);
+            double val = screenWidth / 640.0;
+            double val2 = screenHeight / 480.0;
             zoom = Math.Min(val, val2);
-            originX = (num - 640.0 * zoom) / 2.0;
-            originY = (num2 - 480.0 * zoom) / 2.0;
+            originX = (screenWidth - 640.0 * zoom) / 2.0;
+            originY = (screenHeight - 480.0 * zoom) / 2.0;
         }
 
         public void BackgroundCache(string name)
@@ -269,11 +279,15 @@ namespace WindowsPhoneSpeedyBlupi
 
         public void DrawBackground()
         {
-            double num = graphics.GraphicsDevice.Viewport.Width;
-            double num2 = graphics.GraphicsDevice.Viewport.Height;
+            double screenWidth = graphics.GraphicsDevice.Viewport.Width;
+            double screenHeight = graphics.GraphicsDevice.Viewport.Height;
+            if (screenHeight > 480)
+            {
+                screenWidth = screenHeight * (640f / 480f);
+            }
             Texture2D bitmap = GetBitmap(3);
             Rectangle srcRectangle = GetSrcRectangle(bitmap, 10, 10, 10, 10, 0, 0);
-            Rectangle destinationRectangle = new Rectangle(0, 0, (int)num, (int)num2);
+            Rectangle destinationRectangle = new Rectangle(0, 0, (int)screenWidth, (int)screenHeight);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             spriteBatch.Draw(bitmap, destinationRectangle, srcRectangle, Color.White);
             spriteBatch.End();

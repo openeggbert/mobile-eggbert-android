@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Devices.Sensors;
 
 namespace WindowsPhoneSpeedyBlupi
 {
-    public class AccelerometerDummyImpl : IAccelerometer
+    public class AccelerometerAndroidImpl : IAccelerometer
     {
         public event EventHandler<AccelerometerEventArgs> CurrentValueChanged;
 
+        private Accelerometer accelerometer = new Accelerometer();
         public void Start()
         {
-            //throw new AccelerometerFailedException();
+            accelerometer.Start();
         }
 
         public void Stop()
         {
-            //throw new AccelerometerFailedException();
+            accelerometer.Stop();
         }
     }
 }
