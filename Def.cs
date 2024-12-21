@@ -3,10 +3,22 @@
 
 
 namespace WindowsPhoneSpeedyBlupi
-{
+{    
 
     public static class Def
     {
+        public const bool DETAILED_DEBUGGING = false;
+        
+        public const Platform PLATFORM = Platform.Android;
+        
+        public enum Platform
+        {
+        	Desktop,
+        	Android,
+        	iOS,
+        	Web
+        }
+        
         public enum Phase
         {
             None,

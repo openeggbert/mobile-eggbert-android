@@ -1,6 +1,7 @@
 ﻿// WindowsPhoneSpeedyBlupi, Version=1.0.0.5, Culture=neutral, PublicKeyToken=6db12cd62dbec439
 // WindowsPhoneSpeedyBlupi.Misc
 using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using WindowsPhoneSpeedyBlupi;
 using static WindowsPhoneSpeedyBlupi.Def;
@@ -133,7 +134,7 @@ namespace WindowsPhoneSpeedyBlupi
                 case 6: return KeyboardPress.Space;
                 case 7: return KeyboardPress.Escape;
                 case 8: return KeyboardPress.Pause;
-                default: return KeyboardPress.None; //throw new Exception("Unsupported number for KeyboardPress: " + i);
+                default: Debug.WriteLine("Unsupported number for KeyboardPress: " + i); return KeyboardPress.None;
             }
         }
         public static int keyboardPressToInt(KeyboardPress kp)

@@ -66,7 +66,7 @@ namespace WindowsPhoneSpeedyBlupi
                 TinyRect result = default(TinyRect);
                 double screenWidth = graphics.GraphicsDevice.Viewport.Width;
                 double screenHeight = graphics.GraphicsDevice.Viewport.Height;
-                if(screenHeight > 480) {
+                if(Def.PLATFORM == Def.Platform.Android && screenHeight > 480) {
                     screenWidth = screenHeight * (640f / 480f);
                 }
                 if (screenWidth != 0.0 && screenHeight != 0.0)
@@ -248,12 +248,10 @@ namespace WindowsPhoneSpeedyBlupi
         {
             double screenWidth = graphics.GraphicsDevice.Viewport.Width;
             double screenHeight = graphics.GraphicsDevice.Viewport.Height;
-            if (screenHeight > 480)
+            if (Def.PLATFORM == Def.Platform.Android && screenHeight > 480)
             {
                 screenWidth = screenHeight * (640f / 480f);
             }
-            Debug.WriteLine("graphics.GraphicsDevice.Viewport.Width=" + graphics.GraphicsDevice.Viewport.Width);
-            Debug.WriteLine("graphics.GraphicsDevice.Viewport.Height=" + graphics.GraphicsDevice.Viewport.Height);
             double val = screenWidth / 640.0;
             double val2 = screenHeight / 480.0;
             zoom = Math.Min(val, val2);
@@ -281,7 +279,7 @@ namespace WindowsPhoneSpeedyBlupi
         {
             double screenWidth = graphics.GraphicsDevice.Viewport.Width;
             double screenHeight = graphics.GraphicsDevice.Viewport.Height;
-            if (screenHeight > 480)
+            if (Def.PLATFORM == Def.Platform.Android && screenHeight > 480)
             {
                 screenWidth = screenHeight * (640f / 480f);
             }

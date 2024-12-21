@@ -287,44 +287,42 @@ namespace WindowsPhoneSpeedyBlupi
                 click.Y = mouseState.Y;
                 touchesOrClicks.Add(click);
             }
-
-
+            
             float screenWidth = game1.getGraphics().GraphicsDevice.Viewport.Width;
             float screenHeight = game1.getGraphics().GraphicsDevice.Viewport.Height;
             float screenRatio = screenWidth / screenHeight;
 
-
-            //if (screenRatio < 1.3333333333333333 && false)
+            if (Def.PLATFORM == Platform.Android &&screenRatio < 1.3333333333333333)
             {
                 for (int i = 0; i < touchesOrClicks.Count; i++)
                 {
 
-                    //if (touchOrClick.X == -1) continue;
                     var touchOrClick = touchesOrClicks[i];
+                    if (touchOrClick.X == -1) continue;
 
                     float originalX = touchOrClick.X;
                     float originalY = touchOrClick.Y;
 
-
                     float widthHeightRatio = screenWidth / screenHeight;
                     float heightRatio = 480 / screenHeight;
                     float widthRatio = 640 / screenWidth;
+                    if(Def.DETAILED_DEBUGGING)
+                    {
                     Debug.WriteLine("-----");
                     Debug.WriteLine("originalX=" + originalX);
                     Debug.WriteLine("originalY=" + originalY);
                     Debug.WriteLine("heightRatio=" + heightRatio);
                     Debug.WriteLine("widthRatio=" + widthRatio);
                     Debug.WriteLine("widthHeightRatio=" + widthHeightRatio);
+                    }
                     if (screenHeight> 480) {
                     touchOrClick.X = (int)(originalX * heightRatio);
                     touchOrClick.Y = (int)(originalY * heightRatio);
                     touchesOrClicks[i] = touchOrClick;
                     }
 
-                    Debug.WriteLine("new X" + touchOrClick.X);
-                    Debug.WriteLine("new Y" + touchOrClick.Y);
-                    
-
+                    if(Def.DETAILED_DEBUGGING) Debug.WriteLine("new X" + touchOrClick.X);
+                    if(Def.DETAILED_DEBUGGING) Debug.WriteLine("new Y" + touchOrClick.Y);
                 }
             }
 
