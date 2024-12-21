@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace WindowsPhoneSpeedyBlupi
+namespace Xna.Framework.GamerServices
 {
-    public class TrialMode
+    internal class TrialMode
     {
         private static DateTime trialStartTime;
 
@@ -13,7 +13,7 @@ namespace WindowsPhoneSpeedyBlupi
             trialStartTime = DateTime.Now;
         }
 
-        public static Boolean IsTrialModeExpired()
+        public static bool IsTrialModeExpired()
         {
             return IsTrialMode7DaysLimitExpired() || IsTrialMode10MinutesLimitExpired();
         }
@@ -46,7 +46,7 @@ namespace WindowsPhoneSpeedyBlupi
         private static int trialModeEnabled = -1;
         public static bool IsTrialModeEnabled()
         {
-            if(trialModeEnabled == 1)
+            if (trialModeEnabled == 1)
             {
                 return true;
             }
@@ -55,7 +55,7 @@ namespace WindowsPhoneSpeedyBlupi
             {
                 return false;
             }
-            
+
             const string TRIAL_MODE_ENABLED_TXT = "trialModeEnabled.txt";
             var trialModeEnabledString = File.Exists(TRIAL_MODE_ENABLED_TXT) ? File.ReadAllText(TRIAL_MODE_ENABLED_TXT) : "0";
             var trialModeEnabledLocal = trialModeEnabledString.Equals("1");

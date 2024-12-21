@@ -2,7 +2,7 @@
 // WindowsPhoneSpeedyBlupi.Game1
 using System;
 using Microsoft.Xna.Framework;
-//using Microsoft.Xna.Framework.GamerServices;//todo remove me
+using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
@@ -298,7 +298,7 @@ namespace WindowsPhoneSpeedyBlupi
                     return;
                 case Def.ButtonGlygh.InitBuy:
                 case Def.ButtonGlygh.TrialBuy:
-                    MarketPlace.Show(PlayerIndex.One);
+                    Guide.Show(PlayerIndex.One);
                     SetPhase(Def.Phase.Init);
                     return;
                 case Def.ButtonGlygh.InitRanking:
@@ -924,7 +924,7 @@ namespace WindowsPhoneSpeedyBlupi
             fadeOutPhase = Def.Phase.None;
             inputPad.Phase = this.phase;
             playSetup = this.phase == Def.Phase.PlaySetup;
-            isTrialMode = TrialMode.IsTrialModeEnabled();
+            isTrialMode = Guide.IsTrialMode;
             phaseTime = 0;
             missionToStart2 = -1;
             decor.StopSound();
@@ -969,11 +969,7 @@ namespace WindowsPhoneSpeedyBlupi
             decor.MemorizeDoors(gameData);
             gameData.Write();
         }
-        //public void SetFullScreen(bool isFullScreen)
-        //{
-        //    this.graphics.IsFullScreen = isFullScreen;
-        //    graphics.ToggleFullScreen();
-        //}
+
         public void ToggleFullScreen()
         {
             this.graphics.ToggleFullScreen();

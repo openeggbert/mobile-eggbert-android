@@ -122,36 +122,5 @@ namespace WindowsPhoneSpeedyBlupi
             return true;
         }
 
-        public static KeyboardPress intToKeyboardPress(int i) {
-            switch (i)
-            {
-                case 0: return KeyboardPress.None;
-                case 1: return KeyboardPress.Up;
-                case 2: return KeyboardPress.Right;
-                case 3: return KeyboardPress.Down;
-                case 4: return KeyboardPress.Left;
-                case 5: return KeyboardPress.LeftControl;
-                case 6: return KeyboardPress.Space;
-                case 7: return KeyboardPress.Escape;
-                case 8: return KeyboardPress.Pause;
-                default: Debug.WriteLine("Unsupported number for KeyboardPress: " + i); return KeyboardPress.None;
-            }
-        }
-        public static int keyboardPressToInt(KeyboardPress kp)
-        {
-            switch (kp)
-            {
-                case KeyboardPress.None: return 0;
-                case KeyboardPress.Up: return 1;
-                case KeyboardPress.Right: return 2;
-                case KeyboardPress.Down: return 3;
-                case KeyboardPress.Left: return 4;
-                case KeyboardPress.LeftControl: return 5;
-                case KeyboardPress.Space: return 6;
-                case KeyboardPress.Escape: return 7;
-                case KeyboardPress.Pause: return 8;
-                default: throw new Exception("Unsupported KeyboardPress: " + kp);
-            }
-        }
     }
 }

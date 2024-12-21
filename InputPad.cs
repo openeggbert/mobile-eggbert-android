@@ -217,7 +217,7 @@ namespace WindowsPhoneSpeedyBlupi
             this.gameData = gameData;
             pressedGlyphs = new List<Def.ButtonGlygh>();
             accelSensor = new Accelerometer();
-            accelSensor.CurrentValueChanged += HandleAccelSensorCurrentValueChanged;
+            ((SensorBase<AccelerometerReading>)(object)accelSensor).CurrentValueChanged += HandleAccelSensorCurrentValueChanged;
             accelSlider = new Slider
             {
                 TopLeftCorner = new TinyPoint
@@ -292,7 +292,7 @@ namespace WindowsPhoneSpeedyBlupi
             float screenHeight = game1.getGraphics().GraphicsDevice.Viewport.Height;
             float screenRatio = screenWidth / screenHeight;
 
-            if (Def.PLATFORM == Platform.Android &&screenRatio < 1.3333333333333333)
+            if (Def.PLATFORM == Platform.Android &&screenRatio > 1.3333333333333333)
             {
                 for (int i = 0; i < touchesOrClicks.Count; i++)
                 {
@@ -328,12 +328,12 @@ namespace WindowsPhoneSpeedyBlupi
 
             KeyboardState newState = Keyboard.GetState();
             {
-                if (newState.IsKeyDown(Keys.LeftControl)) touchesOrClicks.Add(createTinyPoint(-1, Misc.keyboardPressToInt(KeyboardPress.LeftControl)));
-                if (newState.IsKeyDown(Keys.Up)) touchesOrClicks.Add(createTinyPoint(-1, Misc.keyboardPressToInt(KeyboardPress.Up)));
-                if (newState.IsKeyDown(Keys.Right)) touchesOrClicks.Add(createTinyPoint(-1, Misc.keyboardPressToInt(KeyboardPress.Right)));
-                if (newState.IsKeyDown(Keys.Down)) touchesOrClicks.Add(createTinyPoint(-1, Misc.keyboardPressToInt(KeyboardPress.Down)));
-                if (newState.IsKeyDown(Keys.Left)) touchesOrClicks.Add(createTinyPoint(-1, Misc.keyboardPressToInt(KeyboardPress.Left)));
-                if (newState.IsKeyDown(Keys.Space)) touchesOrClicks.Add(createTinyPoint(-1, Misc.keyboardPressToInt(KeyboardPress.Space)));
+                if (newState.IsKeyDown(Keys.LeftControl)) touchesOrClicks.Add(createTinyPoint(-1, (int) KeyboardPress.LeftControl));
+                if (newState.IsKeyDown(Keys.Up)) touchesOrClicks.Add(createTinyPoint(-1, (int)KeyboardPress.Up));
+                if (newState.IsKeyDown(Keys.Right)) touchesOrClicks.Add(createTinyPoint(-1, (int)KeyboardPress.Right));
+                if (newState.IsKeyDown(Keys.Down)) touchesOrClicks.Add(createTinyPoint(-1, (int)KeyboardPress.Down));
+                if (newState.IsKeyDown(Keys.Left)) touchesOrClicks.Add(createTinyPoint(-1, (int)KeyboardPress.Left));
+                if (newState.IsKeyDown(Keys.Space)) touchesOrClicks.Add(createTinyPoint(-1, (int)KeyboardPress.Space));
             }
             if (newState.IsKeyDown(Keys.F11))
             {
@@ -352,7 +352,7 @@ namespace WindowsPhoneSpeedyBlupi
                 {
                     keyboardPressed = true;
                 }
-                KeyboardPress keyboardPress = keyboardPressed ? Misc.intToKeyboardPress(touchOrClick.Y) : KeyboardPress.None;
+                KeyboardPress keyboardPress = keyboardPressed ? (KeyboardPress)touchOrClick.Y : KeyboardPress.None;
                 keyPressedUp = keyboardPress == KeyboardPress.Up ? true : keyPressedUp;
                 keyPressedDown = keyboardPress == KeyboardPress.Down ? true : keyPressedDown;
                 keyPressedLeft = keyboardPress == KeyboardPress.Left ? true : keyPressedLeft;
