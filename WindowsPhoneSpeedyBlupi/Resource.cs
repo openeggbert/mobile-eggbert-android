@@ -6,7 +6,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Resources;
 using System.Runtime.CompilerServices;
-using WindowsPhoneSpeedyBlupi;
 
 //[DebuggerNonUserCode]
 //[GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
@@ -25,7 +24,7 @@ namespace WindowsPhoneSpeedyBlupi
         {
             get
             {
-                if (object.ReferenceEquals(resourceMan, null))
+                if (ReferenceEquals(resourceMan, null))
                 {
                     ResourceManager resourceManager = new ResourceManager("WindowsPhoneSpeedyBlupi.Resource", typeof(Resource).Assembly);
                     resourceMan = resourceManager;

@@ -1,7 +1,5 @@
 ﻿// WindowsPhoneSpeedyBlupi, Version=1.0.0.5, Culture=neutral, PublicKeyToken=6db12cd62dbec439
 // WindowsPhoneSpeedyBlupi.Text
-using WindowsPhoneSpeedyBlupi;
-
 namespace WindowsPhoneSpeedyBlupi
 {
     public static class Text
@@ -226,7 +224,7 @@ namespace WindowsPhoneSpeedyBlupi
         {
             if (!string.IsNullOrEmpty(text))
             {
-                TinyPoint pos2 = default(TinyPoint);
+                TinyPoint pos2 = default;
                 pos2.X = pos.X - GetTextWidth(text, size) / 2;
                 pos2.Y = pos.Y;
                 DrawText(pixmap, pos2, text, size);
@@ -265,7 +263,7 @@ namespace WindowsPhoneSpeedyBlupi
 
         private static void DrawChar(Pixmap pixmap, ref TinyPoint pos, char car, double size)
         {
-            TinyPoint pos2 = default(TinyPoint);
+            TinyPoint pos2 = default;
             int num = (short)car * 6;
             int rank = table_char[num];
             pos2.X = pos.X + table_char[num + 1];
@@ -283,7 +281,7 @@ namespace WindowsPhoneSpeedyBlupi
 
         private static int GetCharWidth(char c, double size)
         {
-            return (int)((double)(table_width[table_char[(short)c * 6]] + 1) * size);
+            return (int)((table_width[table_char[(short)c * 6]] + 1) * size);
         }
 
         private static void DrawCharSingle(Pixmap pixmap, TinyPoint pos, int rank, double size)

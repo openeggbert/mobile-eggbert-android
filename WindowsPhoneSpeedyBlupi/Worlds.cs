@@ -7,7 +7,6 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Text;
 using Microsoft.Xna.Framework;
-using WindowsPhoneSpeedyBlupi;
 
 namespace WindowsPhoneSpeedyBlupi
 {
@@ -275,38 +274,38 @@ namespace WindowsPhoneSpeedyBlupi
                     int num = text.IndexOf(name + "=");
                     if (num == -1)
                     {
-                        return default(TinyPoint);
+                        return default;
                     }
                     num += name.Length + 1;
                     int num2 = text.IndexOf(";", num);
                     if (num2 == -1)
                     {
-                        return default(TinyPoint);
+                        return default;
                     }
                     int num3 = text.IndexOf(" ", num);
                     if (num3 == -1)
                     {
-                        return default(TinyPoint);
+                        return default;
                     }
                     string s = text.Substring(num, num2 - num);
                     string s2 = text.Substring(num2 + 1, num3 - num2 - 1);
                     int result;
                     if (!int.TryParse(s, out result))
                     {
-                        return default(TinyPoint);
+                        return default;
                     }
                     int result2;
                     if (!int.TryParse(s2, out result2))
                     {
-                        return default(TinyPoint);
+                        return default;
                     }
-                    TinyPoint result3 = default(TinyPoint);
+                    TinyPoint result3 = default;
                     result3.X = result;
                     result3.Y = result2;
                     return result3;
                 }
             }
-            return default(TinyPoint);
+            return default;
         }
 
         public static int? GetDecorField(string[] lines, string section, int x, int y)

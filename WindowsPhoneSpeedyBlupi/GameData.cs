@@ -1,7 +1,6 @@
 ﻿// WindowsPhoneSpeedyBlupi, Version=1.0.0.5, Culture=neutral, PublicKeyToken=6db12cd62dbec439
 // WindowsPhoneSpeedyBlupi.GameData
 using System;
-using WindowsPhoneSpeedyBlupi;
 
 namespace WindowsPhoneSpeedyBlupi
 {
@@ -84,7 +83,7 @@ namespace WindowsPhoneSpeedyBlupi
         {
             get
             {
-                return (double)(int)data[7] / 100.0;
+                return data[7] / 100.0;
             }
             set
             {

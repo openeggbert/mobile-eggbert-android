@@ -1,25 +1,23 @@
 ﻿// WindowsPhoneSpeedyBlupi, Version=1.0.0.5, Culture=neutral, PublicKeyToken=6db12cd62dbec439
 // WindowsPhoneSpeedyBlupi.Def
 
-
-
 namespace WindowsPhoneSpeedyBlupi
 {
 
     public static class Def
     {
         public const bool DETAILED_DEBUGGING = false;
-        
+
         public const Platform PLATFORM = Platform.Android;
-        
+
         public enum Platform
         {
-        	Desktop,
-        	Android,
-        	iOS,
-        	Web
+            Desktop,
+            Android,
+            iOS,
+            Web
         }
-        
+
         public enum Phase
         {
             None,
@@ -37,7 +35,7 @@ namespace WindowsPhoneSpeedyBlupi
             Ranking
         }
 
-        public enum ButtonGlygh
+        public enum ButtonGlyph
         {
             None,
             InitGamerA,

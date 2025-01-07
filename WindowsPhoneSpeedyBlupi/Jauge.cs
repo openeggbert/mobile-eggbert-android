@@ -1,7 +1,6 @@
 ﻿// WindowsPhoneSpeedyBlupi, Version=1.0.0.5, Culture=neutral, PublicKeyToken=6db12cd62dbec439
 // WindowsPhoneSpeedyBlupi.Jauge
 using Microsoft.Xna.Framework.Media;
-using WindowsPhoneSpeedyBlupi;
 
 namespace WindowsPhoneSpeedyBlupi
 {
@@ -65,7 +64,7 @@ namespace WindowsPhoneSpeedyBlupi
 
         public void Draw()
         {
-            TinyRect rect = default(TinyRect);
+            TinyRect rect = default;
             if (m_bMinimizeRedraw && !m_bRedraw)
             {
                 return;

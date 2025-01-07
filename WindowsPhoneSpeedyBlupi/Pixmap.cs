@@ -4,7 +4,6 @@ using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using WindowsPhoneSpeedyBlupi;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace WindowsPhoneSpeedyBlupi
@@ -63,10 +62,11 @@ namespace WindowsPhoneSpeedyBlupi
         {
             get
             {
-                TinyRect result = default(TinyRect);
+                TinyRect result = default;
                 double screenWidth = graphics.GraphicsDevice.Viewport.Width;
                 double screenHeight = graphics.GraphicsDevice.Viewport.Height;
-                if(Def.PLATFORM == Def.Platform.Android && screenHeight > 480) {
+                if (Def.PLATFORM == Def.Platform.Android && screenHeight > 480)
+                {
                     screenWidth = screenHeight * (640f / 480f);
                 }
                 if (screenWidth != 0.0 && screenHeight != 0.0)
@@ -96,7 +96,7 @@ namespace WindowsPhoneSpeedyBlupi
         {
             get
             {
-                TinyPoint result = default(TinyPoint);
+                TinyPoint result = default;
                 result.X = (int)originX;
                 result.Y = (int)originY;
                 return result;
@@ -113,9 +113,9 @@ namespace WindowsPhoneSpeedyBlupi
 
         public TinyPoint HotSpotToHud(TinyPoint pos)
         {
-            TinyPoint result = default(TinyPoint);
-            result.X = (int)((double)(pos.X - (int)hotSpotX) / hotSpotZoom) + (int)hotSpotX - (int)originX;
-            result.Y = (int)((double)(pos.Y - (int)hotSpotY) / hotSpotZoom) + (int)hotSpotY - (int)originY;
+            TinyPoint result = default;
+            result.X = (int)((pos.X - (int)hotSpotX) / hotSpotZoom) + (int)hotSpotX - (int)originX;
+            result.Y = (int)((pos.Y - (int)hotSpotY) / hotSpotZoom) + (int)hotSpotY - (int)originY;
             return result;
         }
 
@@ -126,102 +126,102 @@ namespace WindowsPhoneSpeedyBlupi
             hotSpotY = y;
         }
 
-        public void DrawInputButton(TinyRect rect, Def.ButtonGlygh glyph, bool pressed, bool selected)
+        public void DrawInputButton(TinyRect rect, Def.ButtonGlyph glyph, bool pressed, bool selected)
         {
             switch (glyph)
             {
-                case Def.ButtonGlygh.InitGamerA:
+                case Def.ButtonGlyph.InitGamerA:
                     DrawIcon(14, selected ? 16 : 4, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.InitGamerB:
+                case Def.ButtonGlyph.InitGamerB:
                     DrawIcon(14, selected ? 17 : 5, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.InitGamerC:
+                case Def.ButtonGlyph.InitGamerC:
                     DrawIcon(14, selected ? 18 : 6, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.InitSetup:
-                case Def.ButtonGlygh.PauseSetup:
+                case Def.ButtonGlyph.InitSetup:
+                case Def.ButtonGlyph.PauseSetup:
                     DrawIcon(14, 19, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.InitPlay:
+                case Def.ButtonGlyph.InitPlay:
                     DrawIcon(14, 7, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.PauseMenu:
-                case Def.ButtonGlygh.ResumeMenu:
+                case Def.ButtonGlyph.PauseMenu:
+                case Def.ButtonGlyph.ResumeMenu:
                     DrawIcon(14, 11, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.PauseBack:
+                case Def.ButtonGlyph.PauseBack:
                     DrawIcon(14, 8, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.PauseRestart:
+                case Def.ButtonGlyph.PauseRestart:
                     DrawIcon(14, 9, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.PauseContinue:
-                case Def.ButtonGlygh.ResumeContinue:
+                case Def.ButtonGlyph.PauseContinue:
+                case Def.ButtonGlyph.ResumeContinue:
                     DrawIcon(14, 10, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.WinLostReturn:
+                case Def.ButtonGlyph.WinLostReturn:
                     DrawIcon(14, 3, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.InitBuy:
-                case Def.ButtonGlygh.TrialBuy:
+                case Def.ButtonGlyph.InitBuy:
+                case Def.ButtonGlyph.TrialBuy:
                     DrawIcon(14, 22, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.InitRanking:
+                case Def.ButtonGlyph.InitRanking:
                     DrawIcon(14, 12, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.TrialCancel:
-                case Def.ButtonGlygh.RankingContinue:
+                case Def.ButtonGlyph.TrialCancel:
+                case Def.ButtonGlyph.RankingContinue:
                     DrawIcon(14, 8, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.SetupSounds:
-                case Def.ButtonGlygh.SetupJump:
-                case Def.ButtonGlygh.SetupZoom:
-                case Def.ButtonGlygh.SetupAccel:
+                case Def.ButtonGlyph.SetupSounds:
+                case Def.ButtonGlyph.SetupJump:
+                case Def.ButtonGlyph.SetupZoom:
+                case Def.ButtonGlyph.SetupAccel:
                     DrawIcon(14, selected ? 13 : 21, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.SetupReset:
+                case Def.ButtonGlyph.SetupReset:
                     DrawIcon(14, 20, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.SetupReturn:
+                case Def.ButtonGlyph.SetupReturn:
                     DrawIcon(14, 8, rect, pressed ? 0.8 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.PlayJump:
+                case Def.ButtonGlyph.PlayJump:
                     DrawIcon(14, 2, rect, pressed ? 0.6 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.PlayAction:
+                case Def.ButtonGlyph.PlayAction:
                     DrawIcon(14, 12, rect, pressed ? 0.6 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.PlayDown:
+                case Def.ButtonGlyph.PlayDown:
                     DrawIcon(14, 23, rect, pressed ? 0.6 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.PlayPause:
+                case Def.ButtonGlyph.PlayPause:
                     DrawIcon(14, 3, rect, pressed ? 0.6 : 1.0, false);
                     break;
-                case Def.ButtonGlygh.Cheat1:
-                case Def.ButtonGlygh.Cheat2:
-                case Def.ButtonGlygh.Cheat3:
-                case Def.ButtonGlygh.Cheat4:
-                case Def.ButtonGlygh.Cheat5:
-                case Def.ButtonGlygh.Cheat6:
-                case Def.ButtonGlygh.Cheat7:
-                case Def.ButtonGlygh.Cheat8:
-                case Def.ButtonGlygh.Cheat9:
+                case Def.ButtonGlyph.Cheat1:
+                case Def.ButtonGlyph.Cheat2:
+                case Def.ButtonGlyph.Cheat3:
+                case Def.ButtonGlyph.Cheat4:
+                case Def.ButtonGlyph.Cheat5:
+                case Def.ButtonGlyph.Cheat6:
+                case Def.ButtonGlyph.Cheat7:
+                case Def.ButtonGlyph.Cheat8:
+                case Def.ButtonGlyph.Cheat9:
                     {
                         DrawIcon(14, 0, rect, pressed ? 0.6 : 1.0, false);
-                        TinyPoint tinyPoint = default(TinyPoint);
+                        TinyPoint tinyPoint = default;
                         tinyPoint.X = rect.Left + rect.Width / 2 - (int)originX;
                         tinyPoint.Y = rect.Top + 28;
                         TinyPoint pos = tinyPoint;
                         Text.DrawTextCenter(this, pos, Decor.GetCheatTinyText(glyph), 1.0);
                         break;
                     }
-                case Def.ButtonGlygh.Cheat11:
-                case Def.ButtonGlygh.Cheat12:
-                case Def.ButtonGlygh.Cheat21:
-                case Def.ButtonGlygh.Cheat22:
-                case Def.ButtonGlygh.Cheat31:
-                case Def.ButtonGlygh.Cheat32:
+                case Def.ButtonGlyph.Cheat11:
+                case Def.ButtonGlyph.Cheat12:
+                case Def.ButtonGlyph.Cheat21:
+                case Def.ButtonGlyph.Cheat22:
+                case Def.ButtonGlyph.Cheat31:
+                case Def.ButtonGlyph.Cheat32:
                     break;
             }
         }
@@ -289,11 +289,11 @@ namespace WindowsPhoneSpeedyBlupi
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             spriteBatch.Draw(bitmap, destinationRectangle, srcRectangle, Color.White);
             spriteBatch.End();
-            TinyPoint tinyPoint = default(TinyPoint);
+            TinyPoint tinyPoint = default;
             tinyPoint.X = (int)originX;
             tinyPoint.Y = (int)originY;
             TinyPoint dest = tinyPoint;
-            TinyRect tinyRect = default(TinyRect);
+            TinyRect tinyRect = default;
             tinyRect.Left = 0;
             tinyRect.Top = 0;
             tinyRect.Right = 640;
@@ -304,9 +304,9 @@ namespace WindowsPhoneSpeedyBlupi
 
         public void DrawChar(int rank, TinyPoint pos, double size)
         {
-            pos.X = (int)((double)pos.X + originX);
-            pos.Y = (int)((double)pos.Y + originY);
-            TinyRect tinyRect = default(TinyRect);
+            pos.X = (int)(pos.X + originX);
+            pos.Y = (int)(pos.Y + originY);
+            TinyRect tinyRect = default;
             tinyRect.Left = pos.X;
             tinyRect.Top = pos.Y;
             tinyRect.Right = pos.X + (int)(32.0 * size);
@@ -317,9 +317,9 @@ namespace WindowsPhoneSpeedyBlupi
 
         public void HudIcon(int channel, int rank, TinyPoint pos)
         {
-            pos.X = (int)((double)pos.X + originX);
-            pos.Y = (int)((double)pos.Y + originY);
-            TinyRect tinyRect = default(TinyRect);
+            pos.X = (int)(pos.X + originX);
+            pos.Y = (int)(pos.Y + originY);
+            TinyRect tinyRect = default;
             tinyRect.Left = pos.X;
             tinyRect.Top = pos.Y;
             tinyRect.Right = pos.X;
@@ -330,7 +330,7 @@ namespace WindowsPhoneSpeedyBlupi
 
         public void QuickIcon(int channel, int rank, TinyPoint pos)
         {
-            TinyRect tinyRect = default(TinyRect);
+            TinyRect tinyRect = default;
             tinyRect.Left = pos.X;
             tinyRect.Top = pos.Y;
             tinyRect.Right = pos.X;
@@ -341,7 +341,7 @@ namespace WindowsPhoneSpeedyBlupi
 
         public void QuickIcon(int channel, int rank, TinyPoint pos, double opacity, double rotation)
         {
-            TinyRect tinyRect = default(TinyRect);
+            TinyRect tinyRect = default;
             tinyRect.Left = pos.X;
             tinyRect.Top = pos.Y;
             tinyRect.Right = pos.X;
@@ -364,11 +364,11 @@ namespace WindowsPhoneSpeedyBlupi
             }
             if (channel == 5)
             {
-                dest.X = (int)((double)dest.X + originX);
-                dest.Y = (int)((double)dest.Y + originY);
+                dest.X = (int)(dest.X + originX);
+                dest.Y = (int)(dest.Y + originY);
             }
             Rectangle value = new Rectangle(rect.Left, rect.Top, rect.Width, rect.Height);
-            Rectangle destinationRectangle = new Rectangle(dest.X, dest.Y, (int)((double)rect.Width * zoom), (int)((double)rect.Height * zoom));
+            Rectangle destinationRectangle = new Rectangle(dest.X, dest.Y, (int)(rect.Width * zoom), (int)(rect.Height * zoom));
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             spriteBatch.Draw(bitmap, destinationRectangle, value, Color.White);
             spriteBatch.End();
@@ -508,22 +508,22 @@ namespace WindowsPhoneSpeedyBlupi
 
         private Rectangle GetDstRectangle(TinyRect rect, int iconWidth, int iconHeight, bool useHotSpot)
         {
-            int num = ((rect.Width == 0) ? iconWidth : rect.Width);
-            int num2 = ((rect.Height == 0) ? iconHeight : rect.Height);
-            int num3 = (int)((double)rect.Left * zoom);
-            int num4 = (int)((double)rect.Top * zoom);
-            int num5 = (int)((double)num3 + (double)num * zoom);
-            int num6 = (int)((double)num4 + (double)num2 * zoom);
+            int num = rect.Width == 0 ? iconWidth : rect.Width;
+            int num2 = rect.Height == 0 ? iconHeight : rect.Height;
+            int num3 = (int)(rect.Left * zoom);
+            int num4 = (int)(rect.Top * zoom);
+            int num5 = (int)(num3 + num * zoom);
+            int num6 = (int)(num4 + num2 * zoom);
             if (useHotSpot && hotSpotZoom > 1.0)
             {
                 num3 -= (int)hotSpotX;
                 num4 -= (int)hotSpotY;
                 num5 -= (int)hotSpotX;
                 num6 -= (int)hotSpotY;
-                num3 = (int)((double)num3 * hotSpotZoom);
-                num4 = (int)((double)num4 * hotSpotZoom);
-                num5 = (int)((double)num5 * hotSpotZoom);
-                num6 = (int)((double)num6 * hotSpotZoom);
+                num3 = (int)(num3 * hotSpotZoom);
+                num4 = (int)(num4 * hotSpotZoom);
+                num5 = (int)(num5 * hotSpotZoom);
+                num6 = (int)(num6 * hotSpotZoom);
                 num3 += (int)hotSpotX;
                 num4 += (int)hotSpotY;
                 num5 += (int)hotSpotX;

@@ -1,7 +1,5 @@
 ﻿// WindowsPhoneSpeedyBlupi, Version=1.0.0.5, Culture=neutral, PublicKeyToken=6db12cd62dbec439
 // WindowsPhoneSpeedyBlupi.Tables
-using WindowsPhoneSpeedyBlupi;
-
 namespace WindowsPhoneSpeedyBlupi
 {
     public static class Tables

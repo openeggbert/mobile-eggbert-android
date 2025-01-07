@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework.Audio;
-using WindowsPhoneSpeedyBlupi;
 
 namespace WindowsPhoneSpeedyBlupi
 {
@@ -134,12 +133,12 @@ namespace WindowsPhoneSpeedyBlupi
 
         public void SetAudioVolume(int volume)
         {
-            this.volume = (double)volume / (double)MAXVOLUME;
+            this.volume = volume / (double)MAXVOLUME;
         }
 
         public int GetAudioVolume()
         {
-            return (int)(volume * (double)MAXVOLUME);
+            return (int)(volume * MAXVOLUME);
         }
 
         public void SetMidiVolume(int volume)
@@ -173,7 +172,7 @@ namespace WindowsPhoneSpeedyBlupi
             }
             if (channel >= 0 && channel < soundEffects.Count)
             {
-                if (channel != 10 && plays.Where((Play x) => x.Channel == channel && !x.IsFree).Any())
+                if (channel != 10 && plays.Where((x) => x.Channel == channel && !x.IsFree).Any())
                 {
                     return true;
                 }
@@ -226,24 +225,24 @@ namespace WindowsPhoneSpeedyBlupi
             double val = 1.0;
             if (pos.X < 0)
             {
-                val = 1.0 + (double)(pos.X / 640) * 2.0;
+                val = 1.0 + pos.X / 640 * 2.0;
             }
             if (pos.X > 640)
             {
                 pos.X -= 640;
-                val = 1.0 - (double)(pos.X / 640) * 2.0;
+                val = 1.0 - pos.X / 640 * 2.0;
             }
             val = Math.Max(val, 0.0);
             val = Math.Min(val, 1.0);
             double val2 = 1.0;
             if (pos.Y < 0)
             {
-                val2 = 1.0 + (double)(pos.Y / 480) * 3.0;
+                val2 = 1.0 + pos.Y / 480 * 3.0;
             }
             if (pos.Y > 480)
             {
                 pos.Y -= 480;
-                val2 = 1.0 - (double)(pos.Y / 480) * 3.0;
+                val2 = 1.0 - pos.Y / 480 * 3.0;
             }
             val2 = Math.Max(val2, 0.0);
             val2 = Math.Min(val2, 1.0);
@@ -252,7 +251,7 @@ namespace WindowsPhoneSpeedyBlupi
 
         private double GetBalance(TinyPoint pos)
         {
-            double val = (double)pos.X * 2.0 / 640.0 - 1.0;
+            double val = pos.X * 2.0 / 640.0 - 1.0;
             val = Math.Max(val, -1.0);
             return Math.Min(val, 1.0);
         }

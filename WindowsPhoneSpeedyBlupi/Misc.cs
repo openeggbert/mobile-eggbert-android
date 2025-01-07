@@ -3,7 +3,6 @@
 using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
-using WindowsPhoneSpeedyBlupi;
 using static WindowsPhoneSpeedyBlupi.Def;
 
 
@@ -13,7 +12,7 @@ namespace WindowsPhoneSpeedyBlupi
     {
         public static Rectangle RotateAdjust(Rectangle rect, double angle)
         {
-            TinyPoint tinyPoint = default(TinyPoint);
+            TinyPoint tinyPoint = default;
             tinyPoint.X = rect.Width / 2;
             tinyPoint.Y = rect.Height / 2;
             TinyPoint p = tinyPoint;
@@ -25,19 +24,19 @@ namespace WindowsPhoneSpeedyBlupi
 
         public static TinyPoint RotatePointRad(double angle, TinyPoint p)
         {
-            return RotatePointRad(default(TinyPoint), angle, p);
+            return RotatePointRad(default, angle, p);
         }
 
         public static TinyPoint RotatePointRad(TinyPoint center, double angle, TinyPoint p)
         {
-            TinyPoint tinyPoint = default(TinyPoint);
-            TinyPoint result = default(TinyPoint);
+            TinyPoint tinyPoint = default;
+            TinyPoint result = default;
             tinyPoint.X = p.X - center.X;
             tinyPoint.Y = p.Y - center.Y;
             double num = Math.Sin(angle);
             double num2 = Math.Cos(angle);
-            result.X = (int)((double)tinyPoint.X * num2 - (double)tinyPoint.Y * num);
-            result.Y = (int)((double)tinyPoint.X * num + (double)tinyPoint.Y * num2);
+            result.X = (int)(tinyPoint.X * num2 - tinyPoint.Y * num);
+            result.Y = (int)(tinyPoint.X * num + tinyPoint.Y * num2);
             result.X += center.X;
             result.Y += center.Y;
             return result;
@@ -65,18 +64,18 @@ namespace WindowsPhoneSpeedyBlupi
         {
             if (speed > 0.0)
             {
-                return Math.Max((int)(speed * (double)max), 1);
+                return Math.Max((int)(speed * max), 1);
             }
             if (speed < 0.0)
             {
-                return Math.Min((int)(speed * (double)max), -1);
+                return Math.Min((int)(speed * max), -1);
             }
             return 0;
         }
 
         public static TinyRect Inflate(TinyRect rect, int value)
         {
-            TinyRect result = default(TinyRect);
+            TinyRect result = default;
             result.Left = rect.Left - value;
             result.Right = rect.Right + value;
             result.Top = rect.Top - value;
@@ -95,7 +94,7 @@ namespace WindowsPhoneSpeedyBlupi
 
         public static bool IntersectRect(out TinyRect dst, TinyRect src1, TinyRect src2)
         {
-            dst = default(TinyRect);
+            dst = default;
             dst.Left = Math.Max(src1.Left, src2.Left);
             dst.Right = Math.Min(src1.Right, src2.Right);
             dst.Top = Math.Max(src1.Top, src2.Top);
@@ -105,7 +104,7 @@ namespace WindowsPhoneSpeedyBlupi
 
         public static bool UnionRect(out TinyRect dst, TinyRect src1, TinyRect src2)
         {
-            dst = default(TinyRect);
+            dst = default;
             dst.Left = Math.Min(src1.Left, src2.Left);
             dst.Right = Math.Max(src1.Right, src2.Right);
             dst.Top = Math.Min(src1.Top, src2.Top);
