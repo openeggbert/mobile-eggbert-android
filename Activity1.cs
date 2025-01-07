@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Views;
 using Microsoft.Xna.Framework;
 using WindowsPhoneSpeedyBlupi;
+using static WindowsPhoneSpeedyBlupi.Xna;
 
 namespace WindowsPhoneSpeedyBlupi
 {
@@ -25,6 +26,7 @@ namespace WindowsPhoneSpeedyBlupi
         {
             base.OnCreate(bundle);
 
+            Env.init(XnaImpl.MonoGame, Platform.Android);
             _game = new Game1();
             _view = _game.Services.GetService(typeof(View)) as View;
 
