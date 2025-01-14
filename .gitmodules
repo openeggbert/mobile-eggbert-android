@@ -1,3 +1,6 @@
 [submodule "WindowsPhoneSpeedyBlupi"]
 	path = WindowsPhoneSpeedyBlupi
 	url = https://code.openeggbert.com/openeggbert/mobile-eggbert-core
+[submodule "Content"]
+	path = Content
+	url = https://code.openeggbert.com/openeggbert/speedy-blupi-dadagames-content
